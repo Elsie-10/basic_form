@@ -4,6 +4,22 @@ import {useState} from 'react';
 export default function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error,setError] = useState('');
+
+    const handleLogin = ()=>{
+        if(!email || !password ){
+            setError("Please fill in all fields");
+            return;
+        }
+        if (!email.includes('@')){
+            setError('Please enter a valid email');
+            return;
+        }
+        setError('');
+
+        console.log('Login successful');
+        console.log('Email:', email);
+    }
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
@@ -21,12 +37,10 @@ export default function Login(){
             value={password}
             onChangeText={setPassword}
             />
+            {error ? <Text style={styles.error}>{error}</Text>: null}
             <Button
             title="Login"
-            onPress={() => {
-                console.log('Email:', email);
-                console.log('Password:', password);
-            }}
+            onPress={handleLogin}
             />
         </View>
 
@@ -50,5 +64,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 15,
         padding: 12,
+    },
+    error:{
+        color: 'red',
+        marginBottom: 15,
+        textAlign: 'center',
     },
 });

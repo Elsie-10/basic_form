@@ -1,5 +1,10 @@
 import { TextInput, StyleSheet } from 'react-native';
-import { Colors, Radius, Spacing } from '@/constants/theme';
+
+import {
+  Colors,
+  Radius,
+  Spacing,
+} from '@/constants/theme';
 
 type AppInputProps = {
   placeholder: string;
@@ -29,13 +34,20 @@ export default function AppInput({
 const styles = StyleSheet.create({
   input: {
     width: '100%',
+    height: 52,
+
     backgroundColor: Colors.light.backgroundElement,
+
     borderWidth: 1,
     borderColor: Colors.light.border,
+
     borderRadius: Radius.medium,
-    padding: Spacing.three,
-    marginBottom: Spacing.two,
-    fontSize: 16,
+
+    paddingHorizontal: Spacing.three,
+
+    fontSize: 14,
     color: Colors.light.text,
+
+    marginBottom: Spacing.two,
   },
 });
